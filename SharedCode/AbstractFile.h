@@ -14,5 +14,8 @@ public:
 
 enum errs {
 	success,
-	failedToWrite
+	failedToWrite,
+	appendNotSupported,
+	incorrectPixel,
+	sizeMismatch
 };
