@@ -10,4 +10,4 @@ Regan Williamson
 	read- correctly printed to the console the contents of the imageFile object {'X', 'X', ' ', 'X', '2'}
 3. It is better to create an interface rather than a class because an interface provides a template for what future derived classes 
 need to be able to do, but allows us to think of the implementation of the derived classes individually.
-5. 
+4. We would need to add code to the createFile method.
