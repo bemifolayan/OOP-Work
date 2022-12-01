@@ -9,7 +9,8 @@ TextFile::TextFile(string s) {
 }
 
 unsigned int TextFile::getSize() {
-	return contents.size();
+	unsigned int s = contents.size();
+	return s;
 }
 
 string TextFile::getName() {

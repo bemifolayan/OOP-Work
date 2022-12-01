@@ -17,5 +17,11 @@ enum errs {
 	failedToWrite,
 	appendNotSupported,
 	incorrectPixel,
-	sizeMismatch
+	sizeMismatch,
+	fileAlreadyExists,
+	nullPointer,
+	incorrectFileType,
+	fileNotOpen,
+	fileOpen,
+	fileDNE
 };

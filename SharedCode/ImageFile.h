@@ -4,7 +4,7 @@
 #include "AbstractFile.h"
 using namespace std;
 // Image file class declaration here
-class ImageFile::public AbstractFile {
+class ImageFile:public AbstractFile {
 private:
 	string name;
 	vector<char> contents;
