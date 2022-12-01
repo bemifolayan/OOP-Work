@@ -24,14 +24,14 @@ int TextFile::write(vector<char> c) {
 }
 
 int TextFile::append(vector<char> c) {
-	for (int i = 0; i < c.size(); i++) {
+	for (unsigned int i = 0; i < c.size(); i++) {
 		contents.push_back(c[i]);
 	}
 	return 0;
 }
 
 void TextFile::read() {
-	for (int i = 0; i < contents.size(); i++) {
+	for (unsigned int i = 0; i < contents.size(); i++) {
 		cout << contents[i];
 	}
 	cout<<endl;

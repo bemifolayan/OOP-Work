@@ -25,9 +25,9 @@ int ImageFile::write(vector<char> c) {
 	if (s * s != c.size() - 1)
 		return sizeMismatch;
 
-	for (int i = 0; i < contents.size(); i++) {
-		if(c[i] == 'X' || c[i] == ' ')
-			contents[i] = c[i];
+	for (unsigned int i = 0; i < c.size() - 1; i++) {
+		if (c[i] == 'X' || c[i] == ' ')
+			contents.push_back(c[i]);
 		else {
 			contents.clear();
 			size = 0;

@@ -7,7 +7,7 @@ using namespace std;
 class AbstractFileSystem {
 public:
 	virtual int addFile(string filename, AbstractFile* f) = 0;
-	virtual int creatFile(string s) = 0;
+	virtual int createFile(string s) = 0;
 	virtual int deleteFile(string s) = 0;
 	virtual AbstractFile* openFile(string s) = 0;
 	virtual int closeFile(AbstractFile* f) = 0;
