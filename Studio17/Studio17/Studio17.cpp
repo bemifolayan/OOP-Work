@@ -31,6 +31,7 @@ int main(int argc, char* argv[])
 	s.createFile("file");
 	cout << s.deleteFile("files") << endl;
 	s.deleteFile("file");
+	s.openFile("nudes");
 	return 0;
 }
 

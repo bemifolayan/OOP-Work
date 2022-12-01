@@ -47,8 +47,8 @@ int SimpleFileSystem::deleteFile(string s) {
 					return fileOpen;
 				}
 			}
-			files.erase(s);
 			delete iter->second;
+			files.erase(s);
 			return success;
 		}
 	}
@@ -64,6 +64,7 @@ AbstractFile* SimpleFileSystem::openFile(string s) {
 				}
 			}
 			openFiles.insert(iter->second);
+			return iter->second;
 		}
 	}
 	return nullptr;
