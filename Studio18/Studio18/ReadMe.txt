@@ -1,6 +1,6 @@
 studio 18 answers here
-Bemi Folayan.
-Regan Williamson.
+Bemi Folayan
+Regan Williamson
 
 1. It would be easy but tedious to create a new file system implementation that creates different file types than the simple file system
 because we already understand the method through simple file system but it requires us to rewrite it for new files and new systems each time.
