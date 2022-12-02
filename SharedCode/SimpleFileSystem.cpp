@@ -20,25 +20,6 @@ int SimpleFileSystem::addFile(string filename, AbstractFile* f) {
 }
 
 
-int SimpleFileSystem::createFile(string s) {
-	for (auto iter = files.begin(); iter != files.end(); iter++) {
-		if (iter->first == s)
-			return fileAlreadyExists;
-	}
-	int pos = s.find('.');
-	if (s.substr(pos + 1) == "txt") {
-		AbstractFile* t= new TextFile(s);
-		files.insert(pair<string, AbstractFile*>(s, t));
-		return success;
-	}
-	else if (s.substr(pos + 1) == "img") {
-		AbstractFile* t = new ImageFile(s);
-		files.insert(pair<string, AbstractFile*>(s, t));
-		return success;
-	}
-	return incorrectFileType;
-}
-
 int SimpleFileSystem::deleteFile(string s) {
 	for (auto iter = files.begin(); iter != files.end(); iter++) {
 		if (iter->first == s) {
