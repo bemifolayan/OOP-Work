@@ -5,7 +5,6 @@
 using namespace std;
 TextFile::TextFile(string s) {
 	name = s;
-
 }
 
 unsigned int TextFile::getSize() {
@@ -30,11 +29,12 @@ int TextFile::append(vector<char> c) {
 	return 0;
 }
 
-void TextFile::read() {
-	for (unsigned int i = 0; i < contents.size(); i++) {
+vector<char> TextFile::read() {
+	return contents;
+	/*for (unsigned int i = 0; i < contents.size(); i++) {
 		cout << contents[i];
 	}
-	cout<<endl;
+	cout<<endl;*/
 }
 
 

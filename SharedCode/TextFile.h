@@ -12,7 +12,7 @@ public:
 	string getName();
 	int write(vector<char> c);
 	int append(vector<char> g);
-	void read();
+	vector<char> read();
 private:
 	vector<char> contents;
 	string name;

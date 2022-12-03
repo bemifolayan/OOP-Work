@@ -12,7 +12,7 @@ private:
 
 public:
 	ImageFile(string s);
-	void read();
+	vector<char> read();
 	int write(vector<char> c);
 	int append(vector<char> c);
 	unsigned int getSize();

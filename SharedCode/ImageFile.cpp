@@ -41,12 +41,13 @@ int ImageFile::append(vector<char> c) {
 	return appendNotSupported;
 }
 
-void ImageFile::read() {
-	int s = int(size) - 48;
+vector<char> ImageFile::read() {
+	return contents;
+	/*int s = int(size) - 48;
 	for (int y = 0; y < s; y++) {
 		for (int x = 0; x < s; x++) {
 			cout << contents[y * s + x] << " ";
 		}
 		cout << endl;
-	}
+	}*/
 }
