@@ -2,11 +2,16 @@
 #include "ImageFile.h"
 #include<vector>
 #include<iostream>
+#include "AbstractFileVisitor.h"
 using namespace std;
 
 ImageFile::ImageFile(string s) {
 	name = s;
 	size = 0;
+}
+
+void ImageFile::accept(AbstractFileVisitor* a) {
+	a->visit_ImageFile(this);
 }
 
 unsigned int ImageFile::getSize() {

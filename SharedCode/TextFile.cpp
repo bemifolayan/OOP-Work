@@ -37,5 +37,8 @@ vector<char> TextFile::read() {
 	cout<<endl;*/
 }
 
+void TextFile::accept(AbstractFileVisitor* a) {
+	a->visit_TextFile(this);
+}
 
 

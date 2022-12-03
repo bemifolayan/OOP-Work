@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 #include "AbstractFile.h"
+#include "AbstractFileVisitor.h"
 using namespace std;
 // Image file class declaration here
 class ImageFile:public AbstractFile {
@@ -17,4 +18,5 @@ public:
 	int append(vector<char> c);
 	unsigned int getSize();
 	string getName();
+	void accept(AbstractFileVisitor* a);
 };
