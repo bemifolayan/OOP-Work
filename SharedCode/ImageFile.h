@@ -2,7 +2,6 @@
 #include<iostream>
 #include<vector>
 #include "AbstractFile.h"
-#include "AbstractFileVisitor.h"
 using namespace std;
 // Image file class declaration here
 class ImageFile:public AbstractFile {

@@ -2,7 +2,6 @@
 #include "ImageFile.h"
 #include<vector>
 #include<iostream>
-#include "AbstractFileVisitor.h"
 using namespace std;
 
 ImageFile::ImageFile(string s) {
