@@ -26,5 +26,13 @@ enum errs {
 	fileNotOpen,
 	fileOpen,
 	fileDNE,
-	wrongPassword
+	wrongPassword, 
+	failedToInsert,
+	quit,
+	fileNotCreated,
+	fileNotAdded, 
+	commandFail,
+	commandDNE,
+	commandErr
+
 };
