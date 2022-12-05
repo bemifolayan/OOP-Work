@@ -40,7 +40,7 @@ int ImageFile::write(vector<char> c) {
 			return incorrectPixel;
 		}
 	}
-	return success;
+	return Success;
 }
 
 int ImageFile::append(vector<char> c) {
@@ -49,11 +49,4 @@ int ImageFile::append(vector<char> c) {
 
 vector<char> ImageFile::read() {
 	return contents;
-	/*int s = int(size) - 48;
-	for (int y = 0; y < s; y++) {
-		for (int x = 0; x < s; x++) {
-			cout << contents[y * s + x] << " ";
-		}
-		cout << endl;
-	}*/
 }

@@ -19,7 +19,7 @@ void CommandPrompt::setFileFactory(AbstractFileFactory* b) {
 int CommandPrompt::addCommand(std::string s, AbstractCommand* c) {
 	
 	if ((m.insert({ s,c })).second == true)
-		return success;
+		return Success;
 	else
 		return failedToInsert;
 }
@@ -60,14 +60,14 @@ int CommandPrompt::run() {
 						a = true;
 						if (i->second->execute("") != 0) {
 							cout << "Command failed." << endl;
-							return commandFail;
+		
 						}
-						return success;
+					
 					}
 				}
 				if (!a) {
 					cout << "Command did not exist." << endl;
-					return commandDNE;
+				
 				}
 			}
 			else {
@@ -81,32 +81,32 @@ int CommandPrompt::run() {
 						if (i->first == b) {
 							i->second->displayInfo();
 							r = true;
-							return success;
+						
 						}
 					}
 					if (!r) {
 						cout << "Command does not exist." << endl;
-						return commandDNE;
+						
 					}
 				}
 				else {
 					for (auto i = m.begin(); i != m.end(); i++) {
 						if (i->first == a) {
-							if (i->second->execute(s.substr(pos)) != 0) {
+							if (i->second->execute(s.substr(pos + 1)) != 0) {
 								cout << "Command returned an error." << endl;
-								return commandErr;
+								
 							}
-							return success;
+							
 							x = true;
 						}
 					}
 					if (!x) {
 						cout << "Command does not exist." << endl;
-						return commandDNE;
+					
 					}
 				}
 			}
 		}
 	}
-	return success;
+	return Success;
 }

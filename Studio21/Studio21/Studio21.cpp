@@ -22,6 +22,9 @@ int main(int argc, char* argv[])
 	comprom.setFileFactory(f);
 	comprom.addCommand("command1", com);
 	comprom.run();
+	
+    AbstractFile* g = s->openFile("regan.txt");
+	cout<< g->getName() << endl;
 	return 0;
 }
 

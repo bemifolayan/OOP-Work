@@ -12,8 +12,8 @@ int TouchCommand::execute(string s) {
 			delete z;
 			return fileNotAdded;
 		}
-		else
-			return success;
+		else 
+			return Success;
 	}
 	else
 		return fileNotCreated;

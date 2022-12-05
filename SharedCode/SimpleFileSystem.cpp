@@ -16,7 +16,7 @@ int SimpleFileSystem::addFile(string filename, AbstractFile* f) {
 		return nullPointer;
 	}
 	files.insert(pair<string, AbstractFile*>(filename, f));
-	return success;
+	return Success;
 }
 
 
@@ -30,7 +30,7 @@ int SimpleFileSystem::deleteFile(string s) {
 			}
 			delete iter->second;
 			files.erase(s);
-			return success;
+			return Success;
 		}
 	}
 	return fileDNE;
@@ -39,6 +39,7 @@ int SimpleFileSystem::deleteFile(string s) {
 AbstractFile* SimpleFileSystem::openFile(string s) {
 	for (auto iter = files.begin(); iter != files.end(); iter++) {
 		if (iter->first == s) {
+
 			for (auto i = openFiles.begin(); i != openFiles.end(); i++) {
 				if (*i == iter->second) {
 					return nullptr;
@@ -55,7 +56,7 @@ int SimpleFileSystem::closeFile(AbstractFile* f) {
 	for (auto i = openFiles.begin(); i != openFiles.end(); i++) {
 		if (*i == f) {
 			openFiles.erase(f);
-			return success;
+			return Success;
 		}
 	}
 	return fileNotOpen;
