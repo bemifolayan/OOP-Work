@@ -25,5 +25,6 @@ enum errs {
 	incorrectFileType,
 	fileNotOpen,
 	fileOpen,
-	fileDNE
+	fileDNE,
+	wrongPassword
 };
