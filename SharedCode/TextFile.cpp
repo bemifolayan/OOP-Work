@@ -2,6 +2,8 @@
 #include "TextFile.h"
 #include <iostream>
 #include "AbstractFile.h"
+#include "AbstractFileVisitor.h"
+
 using namespace std;
 TextFile::TextFile(string s) {
 	name = s;

@@ -1,7 +1,7 @@
 #pragma once
 #include<vector>
 #include<iostream>
-#include "AbstractFileVisitor.h"
+class AbstractFileVisitor;
 using namespace std;
 // declare AbstractFile here. As all methods are virtual and will not be defined, no .cpp file is necessary
 class AbstractFile {

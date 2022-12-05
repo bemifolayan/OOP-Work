@@ -11,10 +11,12 @@ void BasicDisplayVisitor::visit_TextFile(TextFile* t) {
 }
 
 void BasicDisplayVisitor::visit_ImageFile(ImageFile* t) {
-	int s = int(t->getSize()) - 48;
+
+	int s = int(sqrt(t->getSize()));
 	for (int y = 0; y < s; y++) {
 		for (int x = 0; x < s; x++) {
-			cout << t->read()[y * s + x] << " ";
+			char c = t->read()[y*s + x];
+			cout << c << " ";
 		}
 		cout << endl;
 	}

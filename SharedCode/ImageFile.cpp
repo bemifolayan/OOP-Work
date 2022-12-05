@@ -2,6 +2,8 @@
 #include "ImageFile.h"
 #include<vector>
 #include<iostream>
+#include "AbstractFileVisitor.h"
+
 using namespace std;
 
 ImageFile::ImageFile(string s) {
@@ -14,7 +16,7 @@ void ImageFile::accept(AbstractFileVisitor* a) {
 }
 
 unsigned int ImageFile::getSize() {
-	unsigned int s = contents.size();
+	unsigned int s = unsigned int(contents.size());
 	return s;
 }
 

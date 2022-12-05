@@ -2,7 +2,7 @@
 #include "AbstractFile.h"
 #include<vector>
 #include<iostream>
-
+class AbstractFileVisitor;
 using namespace std;
 // TextFile declaration goes here
 class TextFile : public AbstractFile {
