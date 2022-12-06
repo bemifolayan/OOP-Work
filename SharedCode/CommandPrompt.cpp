@@ -1,5 +1,6 @@
 #include "CommandPrompt.h"
 #include "AbstractCommand.h"
+#include "LSCommand.h"
 #include <map>
 #include <iostream>
 #include<sstream>
@@ -45,11 +46,15 @@ int CommandPrompt::run() {
 	bool a = false;
 	bool r = false;
 	bool x = false;
+	AbstractCommand* n = new LSCommand(fileSystem);
 	while (1) {
 		s = prompt();
 		int pos = s.find(' ');
 		if (s == "q")
 			return quit;
+		else if (s == "ls") {
+			n->execute("");
+		}
 		else if (s == "help") {
 			listCommands();
 		}
@@ -88,6 +93,14 @@ int CommandPrompt::run() {
 						cout << "Command does not exist." << endl;
 						
 					}
+				}
+				else if (a == "ls") {
+					str >> b;
+					if (b == "-m") {
+						n->execute(b);
+					}
+					else
+						cout << "command does not exist" << endl;
 				}
 				else {
 					for (auto i = m.begin(); i != m.end(); i++) {

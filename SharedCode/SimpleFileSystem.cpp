@@ -19,6 +19,14 @@ int SimpleFileSystem::addFile(string filename, AbstractFile* f) {
 	return Success;
 }
 
+set<string> SimpleFileSystem::getFileNames() {
+	set<string> names;
+	for (auto iter = files.begin(); iter != files.end(); iter++) {
+		names.insert(iter->first);
+	}
+	return names;
+}
+
 
 int SimpleFileSystem::deleteFile(string s) {
 	for (auto iter = files.begin(); iter != files.end(); iter++) {

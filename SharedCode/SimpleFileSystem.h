@@ -17,4 +17,5 @@ public:
 	int deleteFile(string s);
 	AbstractFile* openFile(string s);
 	int closeFile(AbstractFile* f) ;
+	set<string> getFileNames();
 };
