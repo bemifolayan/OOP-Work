@@ -1,6 +1,8 @@
 #include "CommandPrompt.h"
 #include "AbstractCommand.h"
 #include "LSCommand.h"
+#include "CatCommand.h"
+#include "DisplayCommand.h"
 #include "RemoveCommand.h"
 #include <map>
 #include <iostream>
@@ -49,6 +51,8 @@ int CommandPrompt::run() {
 	bool x = false;
 	AbstractCommand* n = new LSCommand(fileSystem);
 	AbstractCommand* g = new RemoveCommand(fileSystem);
+	AbstractCommand* cat = new CatCommand(fileSystem);
+	AbstractCommand* ds = new DisplayCommand(fileSystem);
 	while (1) {
 		s = prompt();
 		int pos = s.find(' ');
@@ -108,6 +112,28 @@ int CommandPrompt::run() {
 				else if (a == "rm") {
 					str >> b;
 					g->execute(b);
+				}
+				else if (a == "cat") {
+					str >> b;
+					s = s.substr(pos + 1);
+					int pos2 = s.find(' ');
+					if(pos2 == -1)
+						cat->execute(b);
+					else {
+						str >> c;
+						cat->execute(b + " " + c);
+					}
+				}
+				else if (a == "ds") {
+					str >> b;
+					s = s.substr(pos + 1);
+					int pos2 = s.find(' ');
+					if (pos2 == -1)
+						ds->execute(b);
+					else {
+						str >> c;
+						ds->execute(b + " " + c);
+					}
 				}
 				else {
 					for (auto i = m.begin(); i != m.end(); i++) {

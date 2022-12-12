@@ -1,5 +1,6 @@
 #include "PasswordProxy.h"
 #include <iostream>
+#include <string>
 #include<vector>
 
 PasswordProxy::PasswordProxy(AbstractFile* f, string s) {
@@ -14,7 +15,7 @@ PasswordProxy::~PasswordProxy() {
 string PasswordProxy::passwordPrompt() {
 	string s;
 	cout << "Password: " << endl;
-	cin >> s;
+	getline(cin, s);
 	return s;
 }
 
