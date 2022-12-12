@@ -1,6 +1,7 @@
 #include "CommandPrompt.h"
 #include "AbstractCommand.h"
 #include "LSCommand.h"
+#include "RemoveCommand.h"
 #include <map>
 #include <iostream>
 #include<sstream>
@@ -47,6 +48,7 @@ int CommandPrompt::run() {
 	bool r = false;
 	bool x = false;
 	AbstractCommand* n = new LSCommand(fileSystem);
+	AbstractCommand* g = new RemoveCommand(fileSystem);
 	while (1) {
 		s = prompt();
 		int pos = s.find(' ');
@@ -79,6 +81,7 @@ int CommandPrompt::run() {
 				istringstream str(s);
 				string a;
 				string b;
+				string c;
 				str >> a;
 				if (a == "help") {
 					str >> b;
@@ -102,12 +105,15 @@ int CommandPrompt::run() {
 					else
 						cout << "command does not exist" << endl;
 				}
+				else if (a == "rm") {
+					str >> b;
+					g->execute(b);
+				}
 				else {
 					for (auto i = m.begin(); i != m.end(); i++) {
 						if (i->first == a) {
 							if (i->second->execute(s.substr(pos + 1)) != 0) {
 								cout << "Command returned an error." << endl;
-								
 							}
 							
 							x = true;
