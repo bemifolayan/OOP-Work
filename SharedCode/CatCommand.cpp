@@ -44,7 +44,7 @@ int CatCommand::execute(string a) {
 
 					if (line2 == ":wq") {
 						vector<char> c;
-						for (int i = 0; i < line1.size(); i++) {
+						for (unsigned int i = 0; i < line1.size(); i++) {
 							c.push_back(line1[i]);
 						}
 						//c.push_back('\n');
@@ -75,7 +75,7 @@ int CatCommand::execute(string a) {
 
 				if (line2 == ":wq") {
 					vector<char> c;
-					for (int i = 0; i < line1.size(); i++) {
+					for (unsigned int i = 0; i < line1.size(); i++) {
 						c.push_back(line1[i]);
 					}
 					//c.push_back('\n');

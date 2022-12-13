@@ -21,7 +21,7 @@ void MacroCommand::setParseStrategy(AbstractParsingStrategy* o) {
 
 int MacroCommand::execute(string a) {
 	vector<string> s = p->parse(a);
-	for (int i = 0; i < commands.size(); i++) {
+	for (unsigned int i = 0; i < commands.size(); i++) {
 		if (commands[i]->execute(s[i]) != 0)
 			return commandFail;
 	}

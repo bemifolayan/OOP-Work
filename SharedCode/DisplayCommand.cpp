@@ -33,7 +33,7 @@ int DisplayCommand::execute(string a) {
 	
 				AbstractFile* file = s->openFile(*i);
 				vector<char> cont = file->read();
-				for (int i = 0; i < cont.size(); i++) {
+				for (unsigned int i = 0; i < cont.size(); i++) {
 					cout << cont[i];
 				}
 				cout << endl;
