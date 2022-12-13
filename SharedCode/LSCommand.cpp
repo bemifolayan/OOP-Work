@@ -32,6 +32,7 @@ int LSCommand::execute(string a) {
 	
 		for (auto i = n.begin(); i != n.end(); i++) {
 			AbstractFile* temp = s->openFile(*i);
+			s->closeFile(temp);
 			AbstractFileVisitor* v = new MetadataDisplayVisitor();
 			temp->accept(v);
 		}

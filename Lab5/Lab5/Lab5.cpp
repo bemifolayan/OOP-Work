@@ -28,12 +28,13 @@ int main(int argc, char* argv[])
 	rn.setParseStrategy(ps);
 	rn.addCommand(cp);
 	rn.addCommand(rm);
+	AbstractCommand* rn1 = &rn;
 	comprom.addCommand("touch", t);
 	comprom.addCommand("rm", rm);
 	comprom.addCommand("cat", cat);
 	comprom.addCommand("ds", ds);
 	comprom.addCommand("cp", cp);
-	//comprom.addCommand("rn", rn);
+	comprom.addCommand("rn", rn1);
 	comprom.setFileSystem(s);
 	comprom.setFileFactory(f);
 	comprom.addCommand("ls", ls);

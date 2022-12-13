@@ -4,7 +4,9 @@
 #include "CatCommand.h"
 #include "DisplayCommand.h"
 #include "RemoveCommand.h"
+#include "MacroCommand.h"
 #include "CopyCommand.h"
+#include "RenameParsingStrategy.h"
 #include <map>
 #include <iostream>
 #include<sstream>
@@ -47,122 +49,54 @@ std::string CommandPrompt::prompt() {
 
 int CommandPrompt::run() {
 	string s;
-	bool a = false;
-	bool r = false;
-	bool x = false;
-	AbstractCommand* n = new LSCommand(fileSystem);
-	AbstractCommand* g = new RemoveCommand(fileSystem);
-	AbstractCommand* cat = new CatCommand(fileSystem);
-	AbstractCommand* ds = new DisplayCommand(fileSystem);
-	AbstractCommand* cp = new CopyCommand(fileSystem);
+	
 	while (1) {
+		bool found = false;
 		s = prompt();
-		int pos = s.find(' ');
 		if (s == "q")
 			return quit;
-		else if (s == "ls") {
-			n->execute("");
-		}
 		else if (s == "help") {
 			listCommands();
+			found = true;
+		}
+		int pos = s.find(' ');
+		if (pos == -1) {
+			for (auto i = m.begin(); i != m.end(); i++) {
+				if (i->first == s) {
+					found = true;
+					if (i->second->execute("") != 0)
+						cout << "The command failed" << endl;
+				}
+			}
+
 		}
 		else {
-			if (pos == -1) {
+			istringstream str(s);
+			string a;
+			string b;
+			str >> a;
+			if (a == "help") {
+				str >> b;
 				for (auto i = m.begin(); i != m.end(); i++) {
-					if (s == i->first) {
-						a = true;
-						if (i->second->execute("") != 0) {
-							cout << "Command failed." << endl;
-
-						}
-
+					if (i->first == b) {
+						found = true;
+						i->second->displayInfo();
 					}
-				}
-				if (!a) {
-					cout << "Command did not exist." << endl;
-
 				}
 			}
 			else {
-				istringstream str(s);
-				string a;
-				string b;
-				string c;
-				str >> a;
-				if (a == "help") {
-					str >> b;
-					for (auto i = m.begin(); i != m.end(); i++) {
-						if (i->first == b) {
-							i->second->displayInfo();
-							r = true;
-
-						}
-					}
-					if (!r) {
-						cout << "Command does not exist." << endl;
-
-					}
-				}
-				else if (a == "ls") {
-					str >> b;
-					if (b == "-m") {
-						n->execute(b);
-					}
-					else
-						cout << "command does not exist" << endl;
-				}
-				else if (a == "rm") {
-					str >> b;
-					g->execute(b);
-				}
-				else if (a == "cat") {
-					str >> b;
-					s = s.substr(pos + 1);
-					int pos2 = s.find(' ');
-					if (pos2 == -1)
-						cat->execute(b);
-					else {
-						str >> c;
-						cat->execute(b + " " + c);
-					}
-				}
-				else if (a == "ds") {
-					str >> b;
-					s = s.substr(pos + 1);
-					int pos2 = s.find(' ');
-					if (pos2 == -1)
-						ds->execute(b);
-					else {
-						str >> c;
-						ds->execute(b + " " + c);
-					}
-				}
-				else if (a == "cp") {
-					str >> b;
-					s = s.substr(pos + 1);
-					int pos2 = s.find(' ');
-					if (pos2 != -1) {
-						str >> c;
-						cp->execute(b + " " + c);
-					}
-				}
-				else {
-					for (auto i = m.begin(); i != m.end(); i++) {
-						if (i->first == a) {
-							if (i->second->execute(s.substr(pos + 1)) != 0) {
-								cout << "Command returned an error." << endl;
-							}
-
-							x = true;
-						}
-					}
-					if (!x) {
-						cout << "Command does not exist." << endl;
-
+				for (auto i = m.begin(); i != m.end(); i++) {
+					if (i->first == a) {
+						found = true;
+						if (i->second->execute(s.substr(pos + 1)) != 0)
+							cout << "the command failed" << endl;
 					}
 				}
 			}
+		
+		}
+		if (found == false) {
+			cout << "The command was not found" << endl;
 		}
 	}
-	return Success;
 }
