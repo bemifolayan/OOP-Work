@@ -16,7 +16,7 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile* t) {
 	for (int y = 0; y < s; y++) {
 		for (int x = 0; x < s; x++) {
 			char c = t->read()[y*s + x];
-			cout << c << " ";
+			cout << c;
 		}
 		cout << endl;
 	}

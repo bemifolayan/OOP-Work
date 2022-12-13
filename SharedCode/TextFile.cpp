@@ -16,7 +16,7 @@ unsigned int TextFile::getSize() {
 
 AbstractFile* TextFile:: clone(string n) {
 	string tempname = name;
-	name = n;
+	name = n + ".txt";
 	AbstractFile* temp = new TextFile(*this);
 	name = tempname;
 	return temp;

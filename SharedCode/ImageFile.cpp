@@ -45,7 +45,7 @@ int ImageFile::write(vector<char> c) {
 
 AbstractFile* ImageFile::clone(string n) {
 	string tempname = name;
-	name = n;
+	name = n + ".img";
 	AbstractFile* temp = new ImageFile(*this);
 	name = tempname;
 	return temp;

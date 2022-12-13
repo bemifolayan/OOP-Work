@@ -15,12 +15,29 @@ int CopyCommand::execute(string a) {
 	int pos = a.find(' ');
 	string file1 = a.substr(0, pos);
 	string newfile = a.substr(pos + 1);
-	set<string> names = s->getFileNames();
+	//set<string> names = s->getFileNames();
+	AbstractFile* file = s->openFile(file1);
+	if (file == nullptr)
+		return fileDNE;
+	else {
+		s->closeFile(file);
+		AbstractFile* copy = file->clone(newfile);
+		if(s->addFile(copy->getName(), copy) != 0) {
+			s->deleteFile(newfile);
+			return commandFail;
+		}
+		else {
+			return Success;
+		}
+	}
+
+	/*
 	for (auto i = names.begin(); i != names.end(); i++) {
 		if (*i == file1) {
 			AbstractFile* file = s->openFile(*i);
 			s->closeFile(file);
 			vector<char> c;
+			/*
 			if (file->append(c) == appendNotSupported) {
 				newfile = newfile + ".img";
 			}
@@ -36,7 +53,8 @@ int CopyCommand::execute(string a) {
 				return Success;
 			}
 		}
-	}
+	}*/
+
 	return fileDNE;
 }
 

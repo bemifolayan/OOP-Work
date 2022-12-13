@@ -42,8 +42,8 @@ std::string CommandPrompt::prompt() {
 	string s;
 	cout << "Please input a valid command, q to quit, help, help<command name>" << endl;
 	cout << "$   ";
-	istream& is = cin;
-	getline(is,s);
+	//istream& is = cin;
+	getline(cin,s);
 	return s;
 }
 

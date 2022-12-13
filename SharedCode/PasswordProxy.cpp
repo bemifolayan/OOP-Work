@@ -13,7 +13,10 @@ PasswordProxy::~PasswordProxy() {
 }
 
 AbstractFile* PasswordProxy ::clone(string n) {
-	return file->clone(n);
+	PasswordProxy* temp = new PasswordProxy(*this);
+	temp->file = this->file->clone(n);
+	temp->password = this->password;
+	return temp;
 }
 
 string PasswordProxy::passwordPrompt() {

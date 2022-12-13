@@ -14,7 +14,10 @@ CatCommand::CatCommand(AbstractFileSystem* f) {
 
 
 int CatCommand::execute(string a) {
+	
 	int pos = a.find(' ');
+
+	
 	string line1;
 	string line2;
 	AbstractFileVisitor* f = new BasicDisplayVisitor();
@@ -32,6 +35,12 @@ int CatCommand::execute(string a) {
 					cout << "Enter data you would like to append to the existing file. Enter :wq to save the file and exit, Enter :q to exit without saving" << endl;
 					getline(cin, line1);
 					getline(cin,line2);
+
+					while (line2 != ":wq" && line2 != ":q") {
+						line1 += "\n";
+						line1 += line2;
+						getline(cin, line2);
+					}
 
 					if (line2 == ":wq") {
 						vector<char> c;
@@ -57,6 +66,13 @@ int CatCommand::execute(string a) {
 				cout << "Enter data you would like to write to the existing file. Enter :wq to save the file and exit, Enter :q to exit without saving" << endl;
 				getline(cin, line1);
 				getline(cin, line2);
+
+				while (line2 != ":wq" && line2 != ":q") {
+					line1 += "\n";
+					line1 += line2;
+					getline(cin, line2);
+				}
+
 				if (line2 == ":wq") {
 					vector<char> c;
 					for (int i = 0; i < line1.size(); i++) {
