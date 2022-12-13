@@ -12,8 +12,8 @@ PasswordProxy::~PasswordProxy() {
 	delete file;
 }
 
-AbstractFile* PasswordProxy ::clone() {
-	return new PasswordProxy(*this);
+AbstractFile* PasswordProxy ::clone(string n) {
+	return file->clone(n);
 }
 
 string PasswordProxy::passwordPrompt() {

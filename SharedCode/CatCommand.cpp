@@ -38,7 +38,7 @@ int CatCommand::execute(string a) {
 						for (int i = 0; i < line1.size(); i++) {
 							c.push_back(line1[i]);
 						}
-						c.push_back('\n');
+						//c.push_back('\n');
 						return file->append(c);
 					}
 					else if (line2 == ":q") {
@@ -62,7 +62,7 @@ int CatCommand::execute(string a) {
 					for (int i = 0; i < line1.size(); i++) {
 						c.push_back(line1[i]);
 					}
-					c.push_back('\n');
+					//c.push_back('\n');
 					int result = file->write(c);
 					s->closeFile(file);
 					return result;

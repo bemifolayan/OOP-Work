@@ -43,8 +43,12 @@ int ImageFile::write(vector<char> c) {
 	return Success;
 }
 
-AbstractFile* ImageFile::clone() {
-	return new ImageFile(*this);
+AbstractFile* ImageFile::clone(string n) {
+	string tempname = name;
+	name = n;
+	AbstractFile* temp = new ImageFile(*this);
+	name = tempname;
+	return temp;
 }
 int ImageFile::append(vector<char> c) {
 	return appendNotSupported;

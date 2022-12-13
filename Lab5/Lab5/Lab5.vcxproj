@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SharedCode\AdditionalParsingStrategy.cpp" />
     <ClCompile Include="..\..\SharedCode\BasicDisplayVisitor.cpp" />
     <ClCompile Include="..\..\SharedCode\CatCommand.cpp" />
     <ClCompile Include="..\..\SharedCode\CommandPrompt.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\..\SharedCode\AbstractFileSystem.h" />
     <ClInclude Include="..\..\SharedCode\AbstractFileVisitor.h" />
     <ClInclude Include="..\..\SharedCode\AbstractParsingStrategy.h" />
+    <ClInclude Include="..\..\SharedCode\AdditionalParsingStrategy.h" />
     <ClInclude Include="..\..\SharedCode\BasicDisplayVisitor.h" />
     <ClInclude Include="..\..\SharedCode\CatCommand.h" />
     <ClInclude Include="..\..\SharedCode\CommandPrompt.h" />

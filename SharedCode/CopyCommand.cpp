@@ -27,8 +27,8 @@ int CopyCommand::execute(string a) {
 			else {
 				newfile = newfile + ".txt";
 			}
-
-			if (s->addFile(newfile, file->clone()) != 0) {
+			
+			if (s->addFile(newfile, file->clone(newfile)) != 0) {
 				s->deleteFile(newfile);
 				return commandFail;
 			}

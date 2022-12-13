@@ -11,6 +11,7 @@
 #include "..\..\\SharedCode\CopyCommand.h"
 #include "..\..\\SharedCode\MacroCommand.h"
 #include "..\..\\SharedCode\RenameParsingStrategy.h"
+#include "..\..\\SharedCode\AdditionalParsingStrategy.h"
 
 int main(int argc, char* argv[])
 {
@@ -29,6 +30,12 @@ int main(int argc, char* argv[])
 	rn.addCommand(cp);
 	rn.addCommand(rm);
 	AbstractCommand* rn1 = &rn;
+	MacroCommand tc(s);
+	AbstractParsingStrategy* aps = new AdditionalParsingStrategy();
+	tc.setParseStrategy(aps);
+	tc.addCommand(t);
+	tc.addCommand(cat);
+	AbstractCommand* tc1 = &tc;
 	comprom.addCommand("touch", t);
 	comprom.addCommand("rm", rm);
 	comprom.addCommand("cat", cat);
@@ -38,6 +45,7 @@ int main(int argc, char* argv[])
 	comprom.setFileSystem(s);
 	comprom.setFileFactory(f);
 	comprom.addCommand("ls", ls);
+	comprom.addCommand("tc", tc1);
 	comprom.run(); 
 	return 0;
 }

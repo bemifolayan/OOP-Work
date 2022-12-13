@@ -14,8 +14,12 @@ unsigned int TextFile::getSize() {
 	return s;
 }
 
-AbstractFile* TextFile:: clone() {
-	return new TextFile(*this);
+AbstractFile* TextFile:: clone(string n) {
+	string tempname = name;
+	name = n;
+	AbstractFile* temp = new TextFile(*this);
+	name = tempname;
+	return temp;
 }
 string TextFile::getName() {
 	return name;

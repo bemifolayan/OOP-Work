@@ -13,7 +13,7 @@ public:
 	int write(vector<char> c);
 	int append(vector<char> g);
 	vector<char> read();
-	AbstractFile* clone();
+	AbstractFile* clone(string n);
 	void accept(AbstractFileVisitor* a);
 private:
 	vector<char> contents;
