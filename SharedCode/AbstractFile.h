@@ -12,6 +12,7 @@ public:
 	virtual unsigned int getSize() = 0;
 	virtual string getName() = 0;
 	virtual void accept(AbstractFileVisitor* a) = 0;
+	virtual AbstractFile* clone() = 0;
 };
 
 enum errs {

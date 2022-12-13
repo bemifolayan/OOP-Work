@@ -18,5 +18,6 @@ public:
 	int append(vector<char> c);
 	unsigned int getSize();
 	string getName();
+	AbstractFile* clone();
 	void accept(AbstractFileVisitor* a);
 };

@@ -14,6 +14,9 @@ unsigned int TextFile::getSize() {
 	return s;
 }
 
+AbstractFile* TextFile:: clone() {
+	return new TextFile(*this);
+}
 string TextFile::getName() {
 	return name;
 }

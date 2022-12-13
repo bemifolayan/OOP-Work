@@ -4,6 +4,7 @@
 #include "CatCommand.h"
 #include "DisplayCommand.h"
 #include "RemoveCommand.h"
+#include "CopyCommand.h"
 #include <map>
 #include <iostream>
 #include<sstream>
@@ -53,6 +54,7 @@ int CommandPrompt::run() {
 	AbstractCommand* g = new RemoveCommand(fileSystem);
 	AbstractCommand* cat = new CatCommand(fileSystem);
 	AbstractCommand* ds = new DisplayCommand(fileSystem);
+	AbstractCommand* cp = new CopyCommand(fileSystem);
 	while (1) {
 		s = prompt();
 		int pos = s.find(' ');
@@ -71,14 +73,14 @@ int CommandPrompt::run() {
 						a = true;
 						if (i->second->execute("") != 0) {
 							cout << "Command failed." << endl;
-		
+
 						}
-					
+
 					}
 				}
 				if (!a) {
 					cout << "Command did not exist." << endl;
-				
+
 				}
 			}
 			else {
@@ -93,12 +95,12 @@ int CommandPrompt::run() {
 						if (i->first == b) {
 							i->second->displayInfo();
 							r = true;
-						
+
 						}
 					}
 					if (!r) {
 						cout << "Command does not exist." << endl;
-						
+
 					}
 				}
 				else if (a == "ls") {
@@ -117,7 +119,7 @@ int CommandPrompt::run() {
 					str >> b;
 					s = s.substr(pos + 1);
 					int pos2 = s.find(' ');
-					if(pos2 == -1)
+					if (pos2 == -1)
 						cat->execute(b);
 					else {
 						str >> c;
@@ -135,19 +137,28 @@ int CommandPrompt::run() {
 						ds->execute(b + " " + c);
 					}
 				}
+				else if (a == "cp") {
+					str >> b;
+					s = s.substr(pos + 1);
+					int pos2 = s.find(' ');
+					if (pos2 != -1) {
+						str >> c;
+						cp->execute(b + " " + c);
+					}
+				}
 				else {
 					for (auto i = m.begin(); i != m.end(); i++) {
 						if (i->first == a) {
 							if (i->second->execute(s.substr(pos + 1)) != 0) {
 								cout << "Command returned an error." << endl;
 							}
-							
+
 							x = true;
 						}
 					}
 					if (!x) {
 						cout << "Command does not exist." << endl;
-					
+
 					}
 				}
 			}

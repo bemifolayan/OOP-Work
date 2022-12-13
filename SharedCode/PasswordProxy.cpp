@@ -12,6 +12,10 @@ PasswordProxy::~PasswordProxy() {
 	delete file;
 }
 
+AbstractFile* PasswordProxy ::clone() {
+	return new PasswordProxy(*this);
+}
+
 string PasswordProxy::passwordPrompt() {
 	string s;
 	cout << "Password: " << endl;

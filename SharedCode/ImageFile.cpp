@@ -43,6 +43,9 @@ int ImageFile::write(vector<char> c) {
 	return Success;
 }
 
+AbstractFile* ImageFile::clone() {
+	return new ImageFile(*this);
+}
 int ImageFile::append(vector<char> c) {
 	return appendNotSupported;
 }
